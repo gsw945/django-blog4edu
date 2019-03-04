@@ -2,7 +2,7 @@
 Django博客-教育专用
 
 # step
-```
+```bash
 # 创建项目
 django-admin startproject main .
 # 创建应用
@@ -13,4 +13,6 @@ python manage.py makemigrations
 python manage.py migrate
 # 运行开发服务器(http://127.0.0.1:8181/)
 python manage.py runserver 0.0.0.0:8181
+# 创建超级用户
+python manage.py createsuperuser --email test@gsw945.com --username admin
 ```

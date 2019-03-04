@@ -16,7 +16,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
+from rest_framework import routers
+
+from apis import views as api_views
+
+router = routers.DefaultRouter()
+router.register(r'users', api_views.UserViewSet)
+router.register(r'group', api_views.GroupViewSet)
+
+# 使用自动 URL 路由连接 API。
+# 另外，我们还包括可浏览 API 的登录 URL。
 urlpatterns = [
-    path('', include('pages.urls')),
+    path(r'', include('pages.urls')),
+    path(r'api/', include(router.urls)),
+    path(r'api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('admin/', admin.site.urls),
 ]
